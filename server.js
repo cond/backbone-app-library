@@ -38,3 +38,27 @@ app.listen(port, function() {
 app.get('/api', function(request, response)  {
     response.send('Library API is running');
 });
+
+// Connect to database (MongoDB)
+mongoose.connect('mongodb://localhost/library_database');
+
+// Schema
+var Book = new mongoose.Schema({
+    title: String,
+    author: String,
+    releaseDate: Date
+});
+
+// Models
+var BookModel = mongoose.model('Book', Book);
+
+// Get a list of all books
+app.get('/api/books', function(request, response) {
+    return BookModel.find(function(err, books) {
+	if (!err) {
+	    return response.send(books);
+	} else {
+	    return console.log(err);
+	}
+    });
+});
