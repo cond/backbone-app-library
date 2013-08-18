@@ -12,8 +12,15 @@ app.LibraryView = Backbone.View.extend({
 
     initialize: function( initialBooks ) {
         this.collection = new app.Library( initialBooks );
+
+	// MongoDBから全データを読み終えたらresetイベントを発生させる
+	this.collection.fetch({reset: true});
         this.render();
+
 	this.listenTo(this.collection, 'add', this.renderBook);
+
+	// resetイベントを受け取ったら、renderメソッドを呼び出すように設定
+	this.listenTo(this.collection, 'reset', this.render);
     },
 
     // render library by rendering each book in its collection
