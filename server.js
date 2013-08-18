@@ -79,3 +79,14 @@ app.post('/api/books', function(request, response) {
     });
     return response.send(book);
 });
+
+// Get a single book by id
+app.get('/api/books/:id', function(request, response) {
+    return BookModel.findById(request.params.id, function(err, book) {
+	if (!err) {
+	    return response.send(book);
+	} else {
+	    return console.log(err);
+	}
+    });
+});
