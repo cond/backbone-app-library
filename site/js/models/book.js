@@ -11,11 +11,6 @@ app.Book = Backbone.Model.extend({
 	keywords: 'None'
     },
 
-    // MongoDBの_idをidにコピーする
-    // (サーバからのレスポンスを受け取って、モデルのコンストラクタに渡
-    // す前に、parseメソッドが呼び出される)
-    parse: function(response) {
-	response.id = response._id;
-	return response;
-    }
+    // MongoDBの_idをidとして使用する
+    idAttribute: "_id"
 });
