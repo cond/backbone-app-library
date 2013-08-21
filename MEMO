@@ -1,0 +1,14 @@
+メモ
+
+* jQUery UIのdatepickerのインストール
+
+jQuery UIのページで、datepickerを含んだカスタムパッケージを作り、ダウン
+ロードする。
+
+http://jqueryui.com/download/
+
+ダウンロードしたZIPファイルを展開して得られた、以下のファイルを
+site/js/libとsite/cssに置く。
+
+    site/css/jquery-ui-1.10.3.custom.css
+    site/js/lib/jquery-ui-1.10.3.custom.min.js
